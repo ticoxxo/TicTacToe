@@ -1,10 +1,18 @@
-import React from 'react';
-import {createSotre} from 'redux';
+import {ADD_ARTICLE} from '../constants/ActionTypes'
 
-export default function index() {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+const initialState = {
+    articles: []
+};
+
+function rootReducer (state = initialState,action){
+    console.log("Keh");
+    console.log(action);
+   if(action.type === ADD_ARTICLE) {
+       return Object.assign({} , state, {
+           articles: state.articles.concat(action.payload)
+       });
+   }
+   return state;
+};
+
+export default rootReducer;
